@@ -1,11 +1,102 @@
+<!DOCTYPE HTML>
+<html>
 <head>
-  <style>
-    h1 {
-      text-align:center;
-      background-color: rgb(200, 200, 200);
-    }
-  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p {
+    position:absolute;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 60px;
+    margin-top: 25%;
+    margin-left: 25%;
+    padding: 12px;
+    z-index: 3;
+    font-weight:700;
+    text-align: right;
+    color:rgb(0, 0, 0);
+}
+
+@keyframes mymove {
+    from {background-color: blue;}
+    to {background-color: red;}
+}
+#b {
+    position: relative;
+    border-style:solid;
+    border-width:10px;
+    padding-right: 0%;
+    margin:0%;
+    width:98%;
+    height:650px;
+    left:0%;
+    z-index: 1;
+}
+#dad {
+    position: absolute;
+    margin-top: 24.5%;
+    margin-left: 25%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: rgb(0, 0, 0);
+    width: 505px;
+    height: 80px;
+    background-color: rgb(150, 18, 18);
+    z-index: 2;
+}
+</style>
 </head>
 <body>
-  <h1>TEST</h1>
+
+<p id="demo"></p>
+    
+
+    <div id="timer">
+        <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jan 1, 2021 00:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+            
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+            
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        
+        if (days == 0) {
+            document.getElementById("demo").innerHTML =hours + "h "
+        + minutes + "m " + seconds + "s ";
+        }
+
+        if (hours == 0) {
+            document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+        }
+
+        if (minutes == 0) {
+            document.getElementById("demo").innerHTML = seconds + "s ";
+        }
+
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+        }, 1000);
+        
+        </script>
+        <div id="dad"></div>
+        <img src="https://media2.giphy.com/media/l0HlJNxDNkTqxJCGk/200.gif" id="b">
+    </div>
 </body>
+</html>
